@@ -81,7 +81,7 @@ def link_clickup_tasks(task_id, linked_task_id):
     requests.post(url, headers=headers)
 
 async def process_audio_with_gemini(audio_bytes, session_data):
-    model = genai.GenerativeModel('gemini-2.0-flash', generation_config={"response_mime_type": "application/json"})
+    model = genai.GenerativeModel('gemini-3.1-flash-lite', generation_config={"response_mime_type": "application/json"})
     categories_str = ", ".join(session_data["categories"]) if session_data["categories"] else "Пока нет категорий"
     tasks_context = json.dumps(session_data["tasks"], ensure_ascii=False)
     
