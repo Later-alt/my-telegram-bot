@@ -140,6 +140,10 @@ async def handle_voice(update: Update, context: ContextTypes.DEFAULT_TYPE):
         print(e)
 
 def main():
+    # Фикс для серверов Render (принудительно создаем цикл событий)
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    
     app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
     app.add_handler(MessageHandler(filters.VOICE, handle_voice))
     print("Бот запущен!")
