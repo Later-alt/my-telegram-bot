@@ -106,7 +106,7 @@ async def handle_voice(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     try:
         voice_file = await context.bot.get_file(update.message.voice.file_id)
-        audio_bytes = await voice_file.download_as_bytearray()
+        audio_bytes = bytes(await voice_file.download_as_bytearray())
         
         task_data = await process_audio_with_gemini(audio_bytes, session)
         
